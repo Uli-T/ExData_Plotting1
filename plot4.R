@@ -27,6 +27,7 @@ dataset <- subset(dataset, Date >= "2007-02-01" & Date <= "2007-02-02")
 dataset$DateTime <- strptime(paste(dataset$Date, dataset$Time), "%Y-%m-%d %H:%M:%S")
 
 ## Plot 4
+png(filename="./plot4.png", width=480, height=480, units="px")
 par(mfrow=c(2,2), mar=c(4,4,2,1))
 # plot 4a
 plot(dataset$DateTime, dataset$Global_active_power, type="l", xlab="", ylab="Global Active Power")
@@ -40,5 +41,4 @@ points(dataset$DateTime, dataset$Sub_metering_2, type="l", col="red")
 legend("topright", col=c("grey", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, lwd=2, bty="n") #bty suppresses box around legend; lty line type; lwd line width
 #plot 4d
 plot(dataset$DateTime, dataset$Global_reactive_power, type = "l", xlab="datetime", ylab="Global_reactive_power", ylim=c(0, 0.5))
-dev.copy(png, file="plot4.png", width=480, height=480)
 dev.off()
