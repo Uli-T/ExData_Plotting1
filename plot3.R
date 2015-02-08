@@ -33,6 +33,6 @@ plot(dataset$DateTime, dataset$Sub_metering_1, type="l", xlab="DateTime", ylab =
 points(dataset$DateTime, dataset$Sub_metering_2, type="l", col="red")
 points(dataset$DateTime, dataset$Sub_metering_3, type="l", col="blue")
 points(dataset$DateTime, dataset$Sub_metering_2, type="l", col="red")
-legend("topright", col=c("grey", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.95, bty="n", lty=1, lwd=2) #lty line type; lwd line width
+legend("topright", col=c("grey", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, lwd=2) #lty line type; lwd line width
 dev.off()
 message("plot3.png saved on disk.")
