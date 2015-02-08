@@ -26,12 +26,13 @@ dataset <- subset(dataset, Date >= "2007-02-01" & Date <= "2007-02-02")
 ## Merge date and time into one variable
 dataset$DateTime <- strptime(paste(dataset$Date, dataset$Time), "%Y-%m-%d %H:%M:%S")
 
-## Plot 3
+## Plot 3 - png(...) needed to be used rather than dev.copy(...) to avoid legend from being cut off.
+png(filename="./plot3.png", width=480, height=480, units="px")
 par(mfrow=c(1,1))
 plot(dataset$DateTime, dataset$Sub_metering_1, type="l", xlab="DateTime", ylab = "Energy Sub Metering", col="grey")
 points(dataset$DateTime, dataset$Sub_metering_2, type="l", col="red")
 points(dataset$DateTime, dataset$Sub_metering_3, type="l", col="blue")
 points(dataset$DateTime, dataset$Sub_metering_2, type="l", col="red")
-legend("topright", col=c("grey", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.7, lty=1, lwd=2) #lty line type; lwd line width
-dev.copy(png, file="plot3.png", width=480, height=480, units="px")
+legend("topright", col=c("grey", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.95, bty="n", lty=1, lwd=2) #lty line type; lwd line width
 dev.off()
+message("plot3.png saved on disk.")
